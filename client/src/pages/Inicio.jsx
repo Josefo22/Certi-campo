@@ -1,6 +1,6 @@
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
-import MenuPrincipal from '../../components/MenuPrincipal';
+import MenuPrincipal from '../components/MenuPrincipal';
 import './Inicio.css';
 
 function Inicio(){
