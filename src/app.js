@@ -10,25 +10,36 @@ const app = express();
 
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://certicampo.vercel.app'  // Reemplaza esto con tu dominio de Vercel
+    'https://certi-campo.vercel.app',
+    'http://localhost:3000'
 ];
 
 app.use(cors({
     origin: function(origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
+        // Permitir solicitudes sin origin (como las de Postman)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'La política CORS para este sitio no permite el acceso desde el origen especificado.';
+            return callback(new Error(msg), false);
         }
+        return callback(null, true);
     },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
 }));
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParse());
 
+// Ruta de health check
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'API is running' });
+});
+
 app.use("/api", authRoutes);
 app.use("/api", registroRuotes);
-
 
 export default app;
