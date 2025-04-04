@@ -10,7 +10,7 @@ function MenuPrincipal(){
             <div className="logo">
                 <button onClick={() => navigate('/')}>
                     <img src={Logo} alt="Logo CertiCampo" className="logo-image"/>
-                    <span className="logo.text">CertiCampo</span>
+                    <span className="logo-text">CertiCampo</span>
                 </button>
             </div>
             <div className="menu">
