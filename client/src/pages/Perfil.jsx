@@ -1,6 +1,6 @@
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
-import MenuPrincipal from '../components/menuPrincipal';
+import MenuPrincipal from '../../components/MenuPrincipal';
 import './Perfil.css';
 
 function Perfil(){

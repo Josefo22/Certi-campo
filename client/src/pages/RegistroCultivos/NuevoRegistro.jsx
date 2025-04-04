@@ -1,4 +1,4 @@
-import MenuPrincipal from '../../components/menuPrincipal';
+import MenuPrincipal from '../../components/MenuPrincipal';
 import { useCultives } from '../../context/CultivesContext';
 import './NuevoRegistro.css';
 

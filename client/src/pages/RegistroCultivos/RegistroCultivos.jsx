@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import MenuPrincipal from '../../components/menuPrincipal';
+import MenuPrincipal from '../../components/MenuPrincipal';
 import { useCultives } from '../../context/CultivesContext';
 import './RegistroCultivos.css';
 
