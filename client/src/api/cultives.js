@@ -1,11 +1,11 @@
-import axios from './axios.js';
+import axios from './axios';
 
-export const getCultivesRequest = () => axios.get("/registros");
+export const getCultivesRequest = () => axios.get("/api/registros");
 
-export const getCultiveRequest = (id) => axios.get(`/registros/${id}`);
+export const getCultiveRequest = (id) => axios.get(`/api/registros/${id}`);
 
-export const createCultiveRequest = (cultive) => axios.post("/registros", cultive);
+export const createCultiveRequest = (cultive) => axios.post("/api/registros", cultive);
 
-export const updateCultiveRequest = (cultive) => axios.put(`/registros/${cultive.id}`, cultive);
+export const updateCultiveRequest = (cultive) => axios.put(`/api/registros/${cultive.id}`, cultive);
 
-export const deleteCultiveRequest = (id) => axios.delete(`/registros/${id}`);
+export const deleteCultiveRequest = (id) => axios.delete(`/api/registros/${id}`);
