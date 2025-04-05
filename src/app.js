@@ -14,9 +14,20 @@ const allowedOrigins = [
     'http://localhost:3000'
 ];
 
+// Middleware para logging de rutas (debe ir antes de las rutas)
+app.use((req, res, next) => {
+    console.log('Nueva petición:', {
+        method: req.method,
+        path: req.path,
+        body: req.body,
+        headers: req.headers
+    });
+    next();
+});
+
 app.use(cors({
     origin: function(origin, callback) {
-        // Permitir solicitudes sin origin (como las de Postman)
+        console.log('Origen de la petición:', origin);
         if (!origin) return callback(null, true);
         
         if (allowedOrigins.indexOf(origin) === -1) {
@@ -39,19 +50,23 @@ app.get('/health', (req, res) => {
     res.status(200).json({ status: 'OK', message: 'API is running' });
 });
 
-// Middleware para logging de rutas
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.path}`);
-    next();
-});
-
 // Rutas de la API
 app.use("/api/auth", authRoutes);
 app.use("/api/registros", registroRuotes);
 
+// Ruta de prueba para verificar que la API está funcionando
+app.get('/api/test', (req, res) => {
+    res.json({ message: 'API está funcionando correctamente' });
+});
+
 // Manejo de rutas no encontradas
 app.use((req, res) => {
-    console.log('Ruta no encontrada:', req.method, req.path);
+    console.log('Ruta no encontrada:', {
+        method: req.method,
+        path: req.path,
+        body: req.body,
+        headers: req.headers
+    });
     res.status(404).json({ 
         error: 'Not Found',
         message: `La ruta ${req.method} ${req.path} no existe`
@@ -60,7 +75,12 @@ app.use((req, res) => {
 
 // Manejo de errores global
 app.use((err, req, res, next) => {
-    console.error('Error:', err);
+    console.error('Error:', {
+        message: err.message,
+        stack: err.stack,
+        path: req.path,
+        method: req.method
+    });
     res.status(err.status || 500).json({
         error: err.message || 'Error interno del servidor'
     });
