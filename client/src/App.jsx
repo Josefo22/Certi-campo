@@ -1,15 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { CultivesProvider } from "./context/CultivesContext";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import CultivesForm from "./pages/CultivesForm";
-import Profile from "./pages/Profile";
+import LoginPage from "./pages/LoginPage";
+import Inicio from "./pages/Inicio";
+import RegistroCultivos from "./pages/RegistroCultivos/RegistroCultivos";
+import NuevoRegistro from "./pages/RegistroCultivos/NuevoRegistro";
+import Certificados from "./pages/Certificados";
+import Perfil from "./pages/Perfil";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
-import CultivesList from "./pages/CultivesList";
-import CultiveDetail from "./pages/CultiveDetail";
 
 function App() {
   return (
@@ -18,38 +17,37 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Inicio />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route
-              path="/cultives"
+              path="/registros"
               element={
                 <ProtectedRoute>
-                  <CultivesList />
+                  <RegistroCultivos />
                 </ProtectedRoute>
               }
             />
             <Route
-              path="/cultives/new"
+              path="/nuevo-registro"
               element={
                 <ProtectedRoute>
-                  <CultivesForm />
+                  <NuevoRegistro />
                 </ProtectedRoute>
               }
             />
             <Route
-              path="/cultives/:id"
+              path="/certificados"
               element={
                 <ProtectedRoute>
-                  <CultiveDetail />
+                  <Certificados />
                 </ProtectedRoute>
               }
             />
             <Route
-              path="/profile"
+              path="/perfil"
               element={
                 <ProtectedRoute>
-                  <Profile />
+                  <Perfil />
                 </ProtectedRoute>
               }
             />
