@@ -64,7 +64,7 @@ export const login = async (req, res) => {
         const token = await createAccessToken({id: userFound._id});
 
         res.cookie("token", token, {
-            httpOnly: true,
+            httpOnly: false, // Permitir acceso desde JavaScript
             secure: false, // true en producción
             sameSite: 'lax',
             maxAge: 24 * 60 * 60 * 1000 // 1 día
@@ -76,7 +76,8 @@ export const login = async (req, res) => {
             name: userFound.name,
             email: userFound.email,
             number_phone: userFound.number_phone,
-            role: userFound.role
+            role: userFound.role,
+            token: token // Incluir el token en la respuesta
         });
     }catch(e){
         handleMongoError(res, e);

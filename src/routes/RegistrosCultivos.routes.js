@@ -12,19 +12,19 @@ import { createRegistroSchema } from "../schemas/RegistroCultivos.schema.js";
 
 const router = Router();
 
-router.get("/registros", authRequired, getRegistros);
+router.get("/", authRequired, getRegistros);
 
-router.get("/registros/:id", authRequired, getRegistro);
+router.get("/:id", authRequired, getRegistro);
 
 router.post(
-  "/registros",
+  "/",
   authRequired,
   validateSchema(createRegistroSchema),
   createRegistro
 );
 
-router.delete("/registros/:id", authRequired, deleteRegistro);
+router.delete("/:id", authRequired, deleteRegistro);
 
-router.put("/registros/:id", authRequired, updateRegistro);
+router.put("/:id", authRequired, updateRegistro);
 
 export default router;

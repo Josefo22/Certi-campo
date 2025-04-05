@@ -1,6 +1,5 @@
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
-import MenuPrincipal from '../components/MenuPrincipal';
 import './Inicio.css';
 
 function Inicio(){
@@ -18,7 +17,6 @@ function Inicio(){
 
     return (
         <div className="inicio">
-            <MenuPrincipal />
             <h1>Hola, {user ? user.name : 'Usuario'} </h1>
             <div className="announcements-container">
                 <div className="grid">

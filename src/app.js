@@ -5,6 +5,8 @@ import cors from 'cors';
 
 import authRoutes from './routes/auth.routes.js';
 import registroRuotes from './routes/RegistrosCultivos.routes.js';
+import postsRoutes from './routes/posts.routes.js';
+import profileRoutes from './routes/profile.routes.js';
 
 const app = express();
 
@@ -53,6 +55,8 @@ app.get('/health', (req, res) => {
 // Rutas de la API
 app.use("/api/auth", authRoutes);
 app.use("/api/registros", registroRuotes);
+app.use("/api/posts", postsRoutes);
+app.use("/api/users", profileRoutes);
 
 // Ruta de prueba para verificar que la API está funcionando
 app.get('/api/test', (req, res) => {

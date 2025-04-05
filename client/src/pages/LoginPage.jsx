@@ -30,7 +30,7 @@ function LoginPage() {
 
     useEffect(() => {
         if (user) {
-            navigate('/');
+            navigate('/inicio');
         }
     }, [user, navigate]);
 
@@ -45,7 +45,7 @@ function LoginPage() {
     const onSubmit = handleSubmit(async (values) => {
         const result = await login(values);
         if (result) {
-            navigate('/');
+            navigate('/inicio');
         }
     });
 
