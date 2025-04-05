@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="navbar-menu">
         {isAuthenticated ? (
           <>
-            <Link to="/registros">Registros</Link>
+            <Link to="/registros">Registro de Cultivos</Link>
             <Link to="/nuevo-registro">Nuevo Registro</Link>
             <Link to="/certificados">Certificados</Link>
             <Link to="/perfil">Perfil</Link>
