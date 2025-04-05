@@ -5,7 +5,7 @@
     width: 100%;
     height: 70px;
     background-color: #cdaafa;
-    padding: 0 40px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,16 +33,17 @@
 .navbar-menu {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .navbar-menu a {
     color: #7D2181;
     text-decoration: none;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 5px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .navbar-menu a:hover {
@@ -55,11 +56,12 @@
     background-color: #7D2181;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .logout-button:hover {
@@ -67,36 +69,58 @@
     transform: translateY(-2px);
 }
 
+/* Menú hamburguesa para móviles */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #7D2181;
+    border-radius: 3px;
+}
+
 @media (max-width: 768px) {
-    .navbar {
-        padding: 0 20px;
+    .menu-toggle {
+        display: flex;
     }
-    
+
     .navbar-menu {
-        gap: 10px;
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: #cdaafa;
+        flex-direction: column;
+        padding: 20px;
+        transition: right 0.3s ease;
     }
-    
-    .navbar-menu a, .logout-button {
-        padding: 6px 12px;
-        font-size: 0.9rem;
+
+    .navbar-menu.active {
+        right: 0;
+    }
+
+    .navbar-menu a, 
+    .logout-button {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .navbar {
-        padding: 0 10px;
+        padding: 0 15px;
     }
     
     .navbar-brand a {
         font-size: 1.2rem;
-    }
-    
-    .navbar-menu {
-        gap: 5px;
-    }
-    
-    .navbar-menu a, .logout-button {
-        padding: 5px 10px;
-        font-size: 0.8rem;
     }
 } 
