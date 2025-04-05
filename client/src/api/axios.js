@@ -9,19 +9,40 @@ const instance = axios.create({
     }
 });
 
-// Interceptor para manejar errores
+// Interceptor para requests
+instance.interceptors.request.use(
+    (config) => {
+        console.log('Enviando petición a:', config.url);
+        console.log('Método:', config.method);
+        console.log('Datos:', config.data);
+        return config;
+    },
+    (error) => {
+        console.error('Error en la petición:', error);
+        return Promise.reject(error);
+    }
+);
+
+// Interceptor para responses
 instance.interceptors.response.use(
-    (response) => response,
+    (response) => {
+        console.log('Respuesta recibida:', response.data);
+        return response;
+    },
     (error) => {
         if (error.response) {
-            // El servidor respondió con un código de estado fuera del rango 2xx
-            console.error('Error de respuesta:', error.response.data);
+            console.error('Error de respuesta:', {
+                status: error.response.status,
+                data: error.response.data,
+                url: error.config.url
+            });
         } else if (error.request) {
-            // La petición fue hecha pero no se recibió respuesta
-            console.error('Error de red:', error.request);
+            console.error('Error de red - No se recibió respuesta:', {
+                url: error.config.url,
+                method: error.config.method
+            });
         } else {
-            // Algo sucedió en la configuración de la petición
-            console.error('Error:', error.message);
+            console.error('Error en la configuración:', error.message);
         }
         return Promise.reject(error);
     }

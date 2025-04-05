@@ -39,7 +39,31 @@ app.get('/health', (req, res) => {
     res.status(200).json({ status: 'OK', message: 'API is running' });
 });
 
-app.use("/api", authRoutes);
-app.use("/api", registroRuotes);
+// Middleware para logging de rutas
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path}`);
+    next();
+});
+
+// Rutas de la API
+app.use("/api/auth", authRoutes);
+app.use("/api/registros", registroRuotes);
+
+// Manejo de rutas no encontradas
+app.use((req, res) => {
+    console.log('Ruta no encontrada:', req.method, req.path);
+    res.status(404).json({ 
+        error: 'Not Found',
+        message: `La ruta ${req.method} ${req.path} no existe`
+    });
+});
+
+// Manejo de errores global
+app.use((err, req, res, next) => {
+    console.error('Error:', err);
+    res.status(err.status || 500).json({
+        error: err.message || 'Error interno del servidor'
+    });
+});
 
 export default app;
