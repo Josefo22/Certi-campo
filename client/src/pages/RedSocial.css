@@ -1,9 +1,258 @@
-.background-redsocial{
+.background-redsocial {
+    min-height: 100vh;
+    background-color: #f1f1f1;
+    padding-top: 70px;
+    font-family: sans-serif;
+}
+
+.red-social-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.red-social-container h1 {
+    color: #7D2181;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.post-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.post-form form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
+}
+
+.post-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.post-form button {
+    background-color: #7D2181;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    align-self: flex-end;
+    transition: all 0.3s ease;
+}
+
+.post-form button:hover {
+    background-color: #8f2a94;
+    transform: translateY(-2px);
+}
+
+.category-filter {
+    margin-bottom: 20px;
+}
+
+.category-filter select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    padding-top: 75px;
-    font-family:sans-serif;
-    height: 100vh;
+    margin-bottom: 15px;
+}
+
+.post-header h3 {
+    color: #7D2181;
+    margin: 0;
+}
+
+.post-category {
+    background-color: #f0e6f1;
+    color: #7D2181;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    margin-bottom: 15px;
+}
+
+.post-content p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.post-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.post-images img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.post-actions button:hover {
+    background-color: #f0e6f1;
+    color: #7D2181;
+}
+
+.post-actions button.liked {
+    color: #7D2181;
+}
+
+.comments-section {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.comment {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.comment strong {
+    color: #7D2181;
+}
+
+.comment p {
+    margin: 5px 0 0;
+}
+
+.comment-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.comment-form input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.comment-form button {
+    background-color: #7D2181;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.comment-form button:hover {
+    background-color: #8f2a94;
+}
+
+.loading {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
+.error {
+    text-align: center;
+    color: #c62828;
+    padding: 20px;
+    background-color: #ffebee;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .red-social-container {
+        padding: 15px;
+    }
+
+    .post-card {
+        padding: 15px;
+    }
+
+    .post-images {
+        grid-template-columns: 1fr;
+    }
+
+    .comment-form {
+        flex-direction: column;
+    }
+
+    .comment-form button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .red-social-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .post-actions {
+        flex-wrap: wrap;
+    }
 }
